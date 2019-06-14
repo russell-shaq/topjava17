@@ -4,6 +4,9 @@
     <!-- To enable JMX Management -->
     <jmxConfigurator/>
 
+    <property scope="local" name="TOPJAVA_ROOT" value="/home/ruslan/IdeaProjects/topjava17" />
+
+
     <appender name="file" class="ch.qos.logback.core.FileAppender">
         <file>${TOPJAVA_ROOT}/log/topjava.log</file>
 
