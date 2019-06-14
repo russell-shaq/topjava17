@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.service.MealService;
+import ru.javawebinar.topjava.service.MealServiceImpl;
 import ru.javawebinar.topjava.util.MealsUtil;
 
 import javax.servlet.ServletException;
@@ -18,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 public class MealServlet extends HttpServlet {
 
     private static final Logger log = LoggerFactory.getLogger(MealServlet.class);
-    private final MealService mealService = new MealService();
+    private final MealService mealService = new MealServiceImpl();
     private static final String MEALS_JSP = "meals.jsp";
     private static final String MEAL_FORM_JSP = "mealForm.jsp";
 
