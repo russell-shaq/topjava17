@@ -17,7 +17,7 @@ public class MealServiceImpl implements MealService {
     private final Map<Integer, Meal> meals = new ConcurrentHashMap<>();
 
     {
-        List<Meal> mealList = MealData.getMeals();
+        List<Meal> mealList = MealData.MEALS;
         mealList.forEach(this::addOrUpdate);
     }
 
