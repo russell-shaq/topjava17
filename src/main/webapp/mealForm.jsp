@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="calories">Enter calories</label>
-                    <input id="calories" type="text" name="calories" value="${meal.calories}" class="form-control" required>
+                    <input id="calories" type="number" name="calories" value="${meal.calories}" class="form-control" required>
                 </div>
                 <input type="hidden" name="id" value="${meal.id}">
                 <input type="hidden" name="action" value="${empty meal.id ? "save": "update"}">

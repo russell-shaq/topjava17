@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="f" uri="http://example.com/functions" %>
 <html>
 <head>
     <title>Title</title>
@@ -36,9 +37,16 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${meals}" var="meal">
+                    <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.MealTo" scope="page" />
                     <tr class="text-center ${meal.excess ? 'text-danger' : 'text-success'}">
                             <%--                    <td>${fn:replace(meal.dateTime, 'T', ' ')}</td>--%>
-                        <td class="align-middle">${meal.date} ${meal.time}</td>
+                        <td class="align-middle">
+                            <fmt:parseDate value="${meal.dateTime}" pattern="y-M-dd'T'H:m" var="date"/>
+                            <fmt:formatDate value="${date}" pattern="yyyy.MM.dd HH:mm:"/>
+                        </td>
+
+<%--                        <td class="align-middle">${meal.date} ${meal.time}</td>--%>
+<%--                        <td class="align-middle">${meal.date} ${meal.time}</td>--%>
                         <td class="align-middle">${meal.description}</td>
                         <td class="align-middle">${meal.calories}</td>
                             <%--<td><a class="text-danger" href="meals?action=update&&id=${meal.id}"><i class="fas fa-trash"></i> Update</a></td>--%>
