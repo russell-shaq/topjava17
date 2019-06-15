@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class MealServlet extends HttpServlet {
@@ -47,7 +46,7 @@ public class MealServlet extends HttpServlet {
             default:
                 log.debug("entered default");
                 req.setAttribute("meals", MealsUtil.getFilteredWithExcess(mealService.getAll(),
-                        LocalTime.MIN, LocalTime.MAX, 2000));
+                        meal -> true));
                 url = MEALS_JSP;
         }
         req.getRequestDispatcher(url).forward(req, resp);
