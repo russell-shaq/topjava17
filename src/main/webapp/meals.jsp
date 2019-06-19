@@ -14,6 +14,15 @@
         .excess {
             color: red;
         }
+
+        dt {
+            display: inline-block;
+        }
+
+        dd {
+            display: inline-block;
+            margin-right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -22,7 +31,23 @@
     <hr/>
     <h2>Meals</h2>
     <a href="meals?action=create">Add Meal</a>
+    <form action="meals" method="get">
+        <input type="hidden" name="action" value="filter"/>
+        <dl>
+            <dt>От даты</dt>
+            <dd><input type="date" name="startDate"/></dd>
+            <dt>До даты</dt>
+            <dd><input type="date" name="endDate"/></dd>
+            <dt>От времени</dt>
+            <dd><input type="time" name="startTime"/></dd>
+            <dt>До времени</dt>
+            <dd><input type="time" name="endTime"/></dd>
+        </dl>
+        <button type="submit">Submit</button>
+        <button onclick="window.history.back() ">Cancel</button>
+    </form>
     <br><br>
+
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
@@ -34,7 +59,7 @@
         </tr>
         </thead>
         <c:forEach items="${meals}" var="meal">
-            <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.MealTo"/>
+            <jsp:useBean id="meal" type="ru.javawebinar.topjava.to.MealTo"/>
             <tr class="${meal.excess ? 'excess' : 'normal'}">
                 <td>
                         <%--${meal.dateTime.toLocalDate()} ${meal.dateTime.toLocalTime()}--%>
